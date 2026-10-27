@@ -127,11 +127,25 @@ h2{font-size:clamp(32px,5vw,56px);font-weight:800;letter-spacing:-.015em;max-wid
 .ctools .cta{background:var(--bosque2);color:#fff}
 .ctools .cta.alt{background:transparent;color:var(--bosque2);box-shadow:inset 0 0 0 2px var(--bosque2);margin:0}
 .cnote{text-align:center;color:var(--gris);font-size:15px;margin:14px auto 0;max-width:60ch}
-@media (max-width:760px){.paper{padding:32px 22px;font-size:16px}}
+.enviar{max-width:780px;margin:44px auto 0;background:var(--bosque2);color:#fff;border-radius:24px;padding:34px 30px}
+.enviar h3{font-size:clamp(24px,3.4vw,34px);color:var(--sol);margin-bottom:8px}
+.enviar p{margin:0 0 6px;opacity:.92}
+.enviar .grid{display:grid;grid-template-columns:1fr 1fr;gap:4px 18px;margin-top:10px}
+.enviar label{display:block;font-weight:700;margin:14px 0 6px}
+.enviar input{width:100%;font:400 18px "Atkinson Hyperlegible";padding:12px 14px;border:2px solid transparent;border-radius:12px;background:#fff;color:var(--tierra)}
+.enviar input:focus{border-color:var(--sol);outline:none}
+.enviar input[aria-invalid=true]{border-color:#ff8a6b}
+.enviar .go{margin-top:24px;font-size:20px;padding:16px 30px}
+.enviar .to{font-size:15px;opacity:.8;margin-top:14px}
+.enviar .err{color:#ffb7a3;font-weight:700;min-height:1.4em;margin-top:10px}
+.enviar .gm{color:#fff;font-size:15px;display:inline-block;margin-top:10px}
+.enviar .ok{display:none;background:var(--sol);color:var(--tierra);border-radius:14px;padding:16px 18px;margin-top:18px;font-weight:700}
+.enviar .ok.show{display:block}
+@media (max-width:760px){.paper{padding:32px 22px;font-size:16px}.enviar{padding:28px 20px}.enviar .grid{grid-template-columns:1fr}}
 @media print{
   @page{size:letter;margin:2cm}
   body{background:#fff}
-  .bar,footer,main>section:not(#carta),#carta .wrap>.kicker,#carta .wrap>h2,#carta .lead,.ctools,.cnote{display:none!important}
+  .bar,footer,main>section:not(#carta),#carta .wrap>.kicker,#carta .wrap>h2,#carta .lead,.ctools,.cnote,.enviar{display:none!important}
   #carta{padding:0;background:#fff}
   .paper{max-height:none!important;box-shadow:none;padding:0;margin:0;max-width:none;font-size:12pt}
   .paper::after{display:none!important}
@@ -265,8 +279,8 @@ footer ul{padding-left:18px}
         <li>Planilla de firmas de vecinos.</li>
       </ul>
       <h3>Notificaciones</h3>
-      <p>Recibo respuesta en el barrio Colinas del Portal, Caucasia; al teléfono 311 770 0431 o al correo haroldco45@gmail.com.</p>
-      <div class="firma">
+      <p id="cNotif">Recibo respuesta en el barrio Colinas del Portal, Caucasia; al teléfono 311 770 0431 o al correo haroldco45@gmail.com.</p>
+      <div class="firma" id="cFirma">
         <p>Atentamente,</p>
         <p style="margin-top:46px">________________________</p>
         <p><b>Harold Augusto Marín Machado</b></p>
@@ -284,6 +298,21 @@ footer ul{padding-left:18px}
       <button class="cta alt" id="bCopy" data-i18n="bCopy">Copiar el texto</button>
     </div>
     <p class="cnote" data-i18n="cnote">Al imprimir sale con la planilla de firmas en una hoja aparte. Si ya escribiste abajo la fecha y el número de radicado, aparecen en la carta.</p>
+    <div class="enviar" id="enviar">
+      <h3 data-i18n="eH">Envíala tú a la Alcaldía</h3>
+      <p data-i18n="eP">Cada vecino que la envía es una petición más. Escribe tus datos, toca Enviar y se abre tu correo con la carta lista y dirigida al alcalde. Solo tienes que darle Enviar.</p>
+      <div class="grid">
+        <div><label for="eNom" data-i18n="eNom">Nombre completo</label><input id="eNom" autocomplete="name"></div>
+        <div><label for="eCC" data-i18n="eCC">Cédula</label><input id="eCC" inputmode="numeric" autocomplete="off"></div>
+        <div><label for="eTel" data-i18n="eTel">Teléfono</label><input id="eTel" type="tel" inputmode="tel" autocomplete="tel"></div>
+        <div><label for="eDir" data-i18n="eDir">Dirección en el barrio (opcional)</label><input id="eDir" autocomplete="street-address"></div>
+      </div>
+      <p class="err" id="eErr" aria-live="polite"></p>
+      <a class="cta go" id="eGo" href="#" data-i18n="eGo">Enviar a la Alcaldía</a><br>
+      <a class="gm" id="eGm" href="#" target="_blank" rel="noopener" data-i18n="eGm">¿No se abre el correo? Envíala desde Gmail</a>
+      <p class="to" data-i18n="eTo">Va para el Despacho del Alcalde (alcaldia@caucasia-antioquia.gov.co) y Contáctenos, con copia a Planeación y Obras Públicas. Sale desde tu propio correo, para que la respuesta te llegue a ti.</p>
+      <div class="ok" id="eOk" data-i18n="eOk">Listo. Cuando le des Enviar en tu correo, la carta queda radicada por correo electrónico. Guarda el mensaje que te responda la Alcaldía con el número de radicado y anótalo abajo.</div>
+    </div>
   </div>
 </section>
 
@@ -341,7 +370,7 @@ es:{
  feat:["Juegos para todas las edades","Huertas","Jardines de lluvia","Compostaje","Corredores ecológicos","Senderos","Áreas de descanso","Plaza central","Fogón comunitario"],
  ask:[["Que no tumben los árboles","Son lo mejor del lote. El parque se diseña alrededor de ellos, como en Yopal."],["Juegos para los niños","Una zona segura, con piso blando y sombra natural."],["Senderos y luz","Caminos para andar y buena iluminación para que el parque sea seguro de noche."],["Gimnasio al aire libre","Máquinas biosaludables para jóvenes y adultos mayores."],["Bancas y sombra","Un lugar para sentarse a conversar con los vecinos."],["Cronograma público","Fecha de inicio, valor y contratista a la vista de la comunidad."]],
  steps:[["Promesa","La Alcaldía se comprometió con el parque"],["Carta radicada","Derecho de petición al alcalde"],["Respuesta","Plazo de 15 días hábiles"],["Mesa de trabajo","Socializar el diseño con el barrio"],["Obras","Inicio de construcción"]],
- bLess:"Ver menos",copied:"Copiado",
+ bLess:"Ver menos",eNeed:"Escribe tu nombre completo, cédula y teléfono para que la carta sea válida.",copied:"Copiado",
  left:"días hábiles le quedan al alcalde para responder",late:"días hábiles de retraso: el plazo ya venció",today:"Hoy vence el plazo para responder",due:"Fecha límite: ",
  shareMsg:"Mira cómo Yopal hizo su parque bajo los árboles. En Colinas del Portal (Caucasia) seguimos esperando el nuestro. Apoya la petición al alcalde: ",
  signMsg:"Hola Harold, soy vecino de Colinas del Portal y quiero firmar la carta para que construyan el parque. Mi nombre es: ",
@@ -350,7 +379,7 @@ es:{
 en:{
  h1a:"Yopal's kids already play under their trees.",h1b:"Colinas del Portal is still waiting.",
  heroP:"In Caucasia we were promised a park for the Colinas del Portal neighborhood. The lot is there, trees and all, but construction hasn't started. Yopal built one just like it, keeping its trees, and it's already open. If they could do it, so can we.",
- cta1:"Follow the petition to the mayor",k6:"The letter",h2f:"This is the formal petition to the mayor",leadF:"Read it in full. You can print it or save it as a PDF, with the neighbors' signature sheet, to file it at City Hall. The letter is in Spanish because it goes to Caucasia City Hall.",bLeer:"Read the full letter",bLess:"Show less",bPrint:"Print or save as PDF",bCopy:"Copy the text",copied:"Copied",cnote:"When printed, the signature sheet comes out on a separate page. If you already entered the filing date and number below, they appear in the letter.", cta2:"Read the letter",credit:"Photo: @minvivienda reel, Ciudad París park, Yopal",heroAlt:"Ciudad París park in Yopal: paths under large trees, colorful play areas and bark mulch",
+ cta1:"Follow the petition to the mayor",eH:"Send it to City Hall yourself",eP:"Every neighbor who sends it is one more petition. Enter your details, tap Send and your email opens with the letter ready and addressed to the mayor. You just press Send.",eNom:"Full name",eCC:"ID number (cédula)",eTel:"Phone",eDir:"Address in the neighborhood (optional)",eGo:"Send to City Hall",eGm:"Email app won't open? Send it from Gmail",eTo:"It goes to the Mayor's Office (alcaldia@caucasia-antioquia.gov.co) and the Contact inbox, with copies to Planning and Public Works. It's sent from your own email so the answer comes back to you.",eOk:"Done. Once you press Send in your email, the letter is filed by email. Keep City Hall's reply with the filing number and enter it below.",eNeed:"Write your full name, cédula and phone so the letter is valid.",k6:"The letter",h2f:"This is the formal petition to the mayor",leadF:"Read it in full. You can print it or save it as a PDF, with the neighbors' signature sheet, to file it at City Hall. The letter is in Spanish because it goes to Caucasia City Hall.",bLeer:"Read the full letter",bLess:"Show less",bPrint:"Print or save as PDF",bCopy:"Copy the text",copied:"Copied",cnote:"When printed, the signature sheet comes out on a separate page. If you already entered the filing date and number below, they appear in the letter.", cta2:"Read the letter",credit:"Photo: @minvivienda reel, Ciudad París park, Yopal",heroAlt:"Ciudad París park in Yopal: paths under large trees, colorful play areas and bark mulch",
  k1:"Same kind of lot, two realities",h2a:"One park delivered, one promised",ySub:"District 6 · Casanare",dEstado:"Status",yEstado:"Opened on October 16, 2026",dInv:"Investment",mill:"million pesos",dBen:"Who benefits",barrios:"neighborhoods",hogares:"about 3,000 households",dArb:"Trees",yArb:"Kept, and the park was built beneath them",cSub:"Bajo Cauca · Antioquia",cEstado:"Promised, no construction",cInv:"Not yet confirmed",cBen:"Colinas del Portal and nearby neighborhoods",cArb:"Already there: the shade Yopal made the most of",
  k2:"The Yopal example",h2b:"What a well-built park has",leadB:"The Ministry of Housing built it under its Territorial Well-being program. It isn't just a field: it's a place for kids, seniors and families, designed around the nature that was already there.",g1:"Handing the park over to the community",g2:"Play areas for all ages",g3:"Paths and green areas",g4:"Neighbors already use it",g5:"Alba Mery Martínez, park beneficiary",
  k3:"What the community asks for",h2c:"How we want it in Colinas del Portal",
@@ -434,6 +463,50 @@ document.getElementById("bCopy").onclick=async e=>{
   const txt=c.innerText.replace(/\n{3,}/g,"\n\n").trim();
   try{await navigator.clipboard.writeText(txt)}catch(_){const a=document.createElement("textarea");a.value=txt;document.body.appendChild(a);a.select();document.execCommand("copy");a.remove()}
   const b=e.target,o=b.textContent;b.textContent=T[L].copied;setTimeout(()=>b.textContent=o,1800);
+};
+
+/* enviar a la Alcaldía */
+const PARA="alcaldia@caucasia-antioquia.gov.co,contactenos@caucasia-antioquia.gov.co",
+      CC="planeacion@caucasia-antioquia.gov.co,obraspublicas@caucasia-antioquia.gov.co",
+      ASUNTO="Derecho de petición — parque del barrio Colinas del Portal";
+const eF={nom:document.getElementById("eNom"),cc:document.getElementById("eCC"),tel:document.getElementById("eTel"),dir:document.getElementById("eDir")};
+try{const g=JSON.parse(localStorage.getItem("pcp-firmante")||"{}");for(const k in eF)eF[k].value=g[k]||""}catch(e){}
+const limpio=v=>v.replace(/\s+/g," ").trim();
+function cuerpo(){
+  const v={};for(const k in eF)v[k]=limpio(eF[k].value);
+  const c=paper.cloneNode(true);
+  c.querySelector(".planilla").remove();c.querySelector("#cRad").remove();
+  c.querySelector("#cFecha").textContent="Caucasia, Antioquia, "+hoyCO().toLocaleDateString("es-CO",{day:"numeric",month:"long",year:"numeric",timeZone:"UTC"});
+  c.querySelector("#cNotif").textContent="Recibo respuesta "+(v.dir?"en "+v.dir+", ":"en el ")+"barrio Colinas del Portal, Caucasia; en este mismo correo electrónico o al teléfono "+v.tel+".";
+  c.querySelector("#cFirma").innerHTML="<p>Atentamente,</p><p>"+v.nom.replace(/[<>&]/g,"")+"</p><p>C.C. "+v.cc.replace(/[<>&]/g,"")+"</p><p>Vecino(a) del barrio Colinas del Portal, Caucasia</p>";
+  c.querySelectorAll("h3").forEach(h=>h.textContent="\n"+h.textContent.toUpperCase());
+  c.querySelectorAll("ol").forEach(o=>o.querySelectorAll(":scope>li").forEach((li,i)=>li.textContent=(i+1)+". "+li.textContent));
+  const an=c.querySelectorAll("ul>li");an[an.length-1].remove();an[an.length-2].remove();
+  c.querySelectorAll("ul>li").forEach(li=>li.textContent="- "+li.textContent);
+  c.querySelectorAll("ol,ul").forEach(l=>l.after(document.createElement("br")));
+  c.style.cssText="position:absolute;left:-9999px;max-height:none";document.body.appendChild(c);
+  const t=c.innerText.replace(/\n{3,}/g,"\n\n").trim();c.remove();return t;
+}
+function valida(){
+  let ok=true;
+  [["nom",5],["cc",5],["tel",7]].forEach(([k,n])=>{const bad=limpio(eF[k].value).length<n;eF[k].setAttribute("aria-invalid",bad);if(bad)ok=false});
+  document.getElementById("eErr").textContent=ok?"":T[L].eNeed;
+  return ok;
+}
+for(const k in eF)eF[k].addEventListener("input",()=>{const g={};for(const j in eF)g[j]=eF[j].value;try{localStorage.setItem("pcp-firmante",JSON.stringify(g))}catch(e){}if(eF[k].getAttribute("aria-invalid")==="true")valida()});
+function enviado(){
+  document.getElementById("eOk").classList.add("show");
+  if(!fecha.value){fecha.value=iso(hoyCO());try{localStorage.setItem("pcp-fecha",fecha.value)}catch(e){}calc();carta()}
+}
+document.getElementById("eGo").onclick=e=>{
+  e.preventDefault();if(!valida())return;
+  location.href="mailto:"+PARA+"?cc="+encodeURIComponent(CC)+"&subject="+encodeURIComponent(ASUNTO)+"&body="+encodeURIComponent(cuerpo());
+  enviado();
+};
+document.getElementById("eGm").onclick=e=>{
+  if(!valida()){e.preventDefault();return}
+  e.currentTarget.href="https://mail.google.com/mail/?view=cm&fs=1&to="+encodeURIComponent(PARA)+"&cc="+encodeURIComponent(CC)+"&su="+encodeURIComponent(ASUNTO)+"&body="+encodeURIComponent(cuerpo());
+  enviado();
 };
 
 /* contadores */
