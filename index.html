@@ -120,14 +120,10 @@ h2{font-size:clamp(32px,5vw,56px);font-weight:800;letter-spacing:-.015em;max-wid
 .paper .firma{margin-top:44px}
 .paper .firma p{margin:0}
 .paper .rad-ok{display:inline-block;background:var(--hoja);color:var(--bosque2);font-weight:700;padding:2px 10px;border-radius:6px}
-.planilla{display:none}
-.planilla table{width:100%;border-collapse:collapse;font-size:14px}
-.planilla th,.planilla td{border:1px solid #444;padding:6px;text-align:left;height:34px}
 .ctools{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:26px}
 .ctools .cta{background:var(--bosque2);color:#fff}
 .ctools .cta.alt{background:transparent;color:var(--bosque2);box-shadow:inset 0 0 0 2px var(--bosque2);margin:0}
-.cnote{text-align:center;color:var(--gris);font-size:15px;margin:14px auto 0;max-width:60ch}
-.enviar{max-width:780px;margin:44px auto 0;background:var(--bosque2);color:#fff;border-radius:24px;padding:34px 30px}
+.enviar{max-width:780px;margin:36px auto 0;background:var(--bosque2);color:#fff;border-radius:24px;padding:34px 30px}
 .enviar h3{font-size:clamp(24px,3.4vw,34px);color:var(--sol);margin-bottom:8px}
 .enviar p{margin:0 0 6px;opacity:.92}
 .enviar .grid{display:grid;grid-template-columns:1fr 1fr;gap:4px 18px;margin-top:10px}
@@ -141,15 +137,17 @@ h2{font-size:clamp(32px,5vw,56px);font-weight:800;letter-spacing:-.015em;max-wid
 .enviar .gm{color:#fff;font-size:15px;display:inline-block;margin-top:10px}
 .enviar .ok{display:none;background:var(--sol);color:var(--tierra);border-radius:14px;padding:16px 18px;margin-top:18px;font-weight:700}
 .enviar .ok.show{display:block}
+.enviar .note2{font-size:15px;opacity:.8;margin-top:14px}
+.paso{max-width:780px;margin:44px auto 0;font-size:clamp(24px,3.4vw,34px);color:var(--bosque2)}
+.paper [data-f].vacio{background:#FFF2C2;color:#8a5a00;padding:0 4px;border-radius:4px}
 @media (max-width:760px){.paper{padding:32px 22px;font-size:16px}.enviar{padding:28px 20px}.enviar .grid{grid-template-columns:1fr}}
 @media print{
   @page{size:letter;margin:2cm}
   body{background:#fff}
-  .bar,footer,main>section:not(#carta),#carta .wrap>.kicker,#carta .wrap>h2,#carta .lead,.ctools,.cnote,.enviar{display:none!important}
+  .bar,footer,main>section:not(#carta),#carta .wrap>.kicker,#carta .wrap>h2,#carta .lead,.ctools,.enviar,.paso{display:none!important}
   #carta{padding:0;background:#fff}
   .paper{max-height:none!important;box-shadow:none;padding:0;margin:0;max-width:none;font-size:12pt}
   .paper::after{display:none!important}
-  .planilla{display:block;break-before:page}
 }
 
 footer{background:var(--tierra);color:#d8d2cc;padding:48px 0;font-size:15px}
@@ -180,14 +178,14 @@ footer ul{padding-left:18px}
   <div class="wrap">
     <h1><span data-i18n="h1a">Yopal ya juega bajo sus árboles.</span><span class="l2" data-i18n="h1b">Colinas del Portal sigue esperando.</span></h1>
     <p data-i18n="heroP">En Caucasia nos prometieron un parque para el barrio Colinas del Portal. El lote está ahí, con sus árboles, pero las obras no arrancan. En Yopal hicieron uno igual, respetando los árboles, y ya lo entregaron. Si allá se pudo, aquí también.</p>
-    <a class="cta" href="#seguimiento" data-i18n="cta1">Seguir la petición al alcalde</a><a class="cta alt" href="#carta" data-i18n="cta2">Leer la carta</a>
+    <a class="cta" href="#carta" data-i18n="cta1">Enviar mi carta al alcalde</a><a class="cta alt" href="#comparacion" data-i18n="cta2">Si en Yopal se pudo...</a>
   </div>
   <span class="credit" data-i18n="credit">Foto: reel de @minvivienda, parque Ciudad París, Yopal</span>
 </section>
 
 <section id="comparacion">
   <div class="wrap">
-    <p class="kicker" data-i18n="k1">Mismo tipo de lote, dos realidades</p>
+    <p class="kicker" data-i18n="k1">Si allá se pudo, ¿por qué acá no?</p>
     <h2 data-i18n="h2a">Un parque entregado y uno prometido</h2>
     <div class="vs">
       <div class="col y">
@@ -240,78 +238,72 @@ footer ul{padding-left:18px}
 
 <section id="carta" class="carta">
   <div class="wrap">
-    <p class="kicker" data-i18n="k6">La carta</p>
-    <h2 data-i18n="h2f">Este es el derecho de petición al alcalde</h2>
-    <p class="lead" data-i18n="leadF">Léela completa. Puedes imprimirla o guardarla en PDF, con la planilla de firmas de los vecinos, para llevarla a radicar en la Alcaldía.</p>
-    <article class="paper" id="paper" lang="es">
-      <p id="cFecha">Caucasia, Antioquia</p>
-      <p style="margin-top:22px">Señor<br><b>JHOAN ODERIS MONTES CORTÉS</b><br>Alcalde Municipal de Caucasia — Despacho del Alcalde<br>Caucasia, Antioquia</p>
-      <p id="cRad"></p>
-      <p style="margin-top:22px"><b>Asunto:</b> Derecho de petición — estado y fecha de inicio de obras del parque del barrio Colinas del Portal</p>
-      <p>Respetado señor alcalde:</p>
-      <p>En ejercicio del derecho de petición, los vecinos del barrio Colinas del Portal le solicitamos información y acciones concretas para que el parque prometido a nuestra comunidad se construya.</p>
-      <h3>Fundamento</h3>
-      <p>Presentamos esta petición con base en el artículo 23 de la Constitución Política y la Ley 1755 de 2015. Según el artículo 14 de esa ley, la Alcaldía debe responder de fondo dentro de los 15 días hábiles siguientes a su radicación. También invocamos el artículo 82 de la Constitución, que obliga al Estado a velar por la protección del espacio público y su destinación al uso común.</p>
-      <h3>Hechos</h3>
-      <ol>
-        <li>La Administración Municipal se comprometió con la comunidad a construir un parque en el lote del barrio Colinas del Portal.</li>
-        <li>El lote está disponible y conserva árboles grandes que dan sombra. A la fecha de esta carta no se han iniciado obras ni se ha socializado con la comunidad un cronograma.</li>
-        <li>Los niños, jóvenes y adultos mayores del barrio y de los sectores vecinos no tienen un espacio cercano y seguro para la recreación y el encuentro.</li>
-        <li>El 16 de octubre de 2026, el Ministerio de Vivienda, Ciudad y Territorio entregó el parque recreodeportivo Ciudad París en la comuna 6 de Yopal, Casanare, dentro de su programa de Bienestar Territorial. Ese parque se construyó conservando los árboles existentes e incluye juegos para todas las edades, huertas, jardines de lluvia, compostaje, corredores ecológicos, senderos, áreas de descanso, una plaza central y un fogón comunitario. La inversión fue de $6.258 millones y beneficia a cerca de 3.000 hogares de 13 barrios.</li>
-        <li>Ese caso demuestra que un lote con árboles, como el nuestro, puede convertirse en un parque de calidad con apoyo de la Nación, y que existen programas a los que el Municipio puede presentar el proyecto.</li>
-      </ol>
-      <h3>Peticiones</h3>
-      <p>Respetuosamente solicitamos:</p>
-      <ol>
-        <li>Informar el estado actual del proyecto del parque de Colinas del Portal: si está inscrito en el Banco de Programas y Proyectos (código BPIN o equivalente), su valor, la fuente de los recursos y la dependencia responsable.</li>
-        <li>Informar si existen estudios, diseños o un proceso de contratación para la obra y, de ser así, su número en el SECOP y su estado.</li>
-        <li>Indicar la fecha estimada de inicio y de terminación de las obras.</li>
-        <li>Si el proyecto aún no cuenta con recursos, gestionar su cofinanciación ante el Ministerio de Vivienda, Ciudad y Territorio (programa de Bienestar Territorial), la Gobernación de Antioquia u otras fuentes, tomando como referente el parque Ciudad París de Yopal, e informarnos las gestiones realizadas.</li>
-        <li>Garantizar que el diseño conserve los árboles existentes del lote.</li>
-        <li>Convocar a la comunidad de Colinas del Portal a una mesa de trabajo para socializar el diseño y el cronograma, e indicar fecha, hora y lugar.</li>
-      </ol>
-      <h3>Anexos</h3>
-      <ul>
-        <li>Nota de prensa del Ministerio de Vivienda sobre el parque Ciudad París de Yopal: minvivienda.gov.co/sala-de-prensa/mas-espacios-para-compartir-y-crecer-minvivienda-entrega-parque-recreodeportivo-en-yopal</li>
-        <li>Video de @minvivienda sobre el parque: instagram.com/reel/De9O3wGMOaO</li>
-        <li>App ciudadana Parque Colinas del Portal: <span id="cUrl"></span></li>
-        <li>Fotos actuales del lote de Colinas del Portal.</li>
-        <li>Planilla de firmas de vecinos.</li>
-      </ul>
-      <h3>Notificaciones</h3>
-      <p id="cNotif">Recibo respuesta en el barrio Colinas del Portal, Caucasia; al teléfono 311 770 0431 o al correo haroldco45@gmail.com.</p>
-      <div class="firma" id="cFirma">
-        <p>Atentamente,</p>
-        <p style="margin-top:46px">________________________</p>
-        <p><b>Harold Augusto Marín Machado</b></p>
-        <p>C.C. ____________________</p>
-        <p>Vecino del barrio Colinas del Portal, en nombre propio y de los vecinos firmantes</p>
-      </div>
-      <div class="planilla">
-        <h3>Planilla de firmas de vecinos</h3>
-        <table><thead><tr><th>Nombre completo</th><th>Cédula</th><th>Dirección en el barrio</th><th>Teléfono</th><th>Firma</th></tr></thead><tbody id="filas"></tbody></table>
-      </div>
-    </article>
-    <div class="ctools">
-      <button class="cta" id="bLeer" data-i18n="bLeer">Leer la carta completa</button>
-      <button class="cta" id="bPrint" data-i18n="bPrint">Imprimir o guardar en PDF</button>
-      <button class="cta alt" id="bCopy" data-i18n="bCopy">Copiar el texto</button>
-    </div>
-    <p class="cnote" data-i18n="cnote">Al imprimir sale con la planilla de firmas en una hoja aparte. Si ya escribiste abajo la fecha y el número de radicado, aparecen en la carta.</p>
+    <p class="kicker" data-i18n="k6">Tu carta al alcalde</p>
+    <h2 data-i18n="h2f">Llénala y envíala desde tu celular</h2>
+    <p class="lead" data-i18n="leadF">Cada vecino presenta su propio derecho de petición. Escribe tus datos, la carta se arma sola con tu nombre y la envías a la Alcaldía de Caucasia. Entre más cartas lleguen, más difícil es ignorarnos.</p>
     <div class="enviar" id="enviar">
-      <h3 data-i18n="eH">Envíala tú a la Alcaldía</h3>
-      <p data-i18n="eP">Cada vecino que la envía es una petición más. Escribe tus datos, toca Enviar y se abre tu correo con la carta lista y dirigida al alcalde. Solo tienes que darle Enviar.</p>
+      <h3 data-i18n="eH">1. Tus datos</h3>
       <div class="grid">
         <div><label for="eNom" data-i18n="eNom">Nombre completo</label><input id="eNom" autocomplete="name"></div>
         <div><label for="eCC" data-i18n="eCC">Cédula</label><input id="eCC" inputmode="numeric" autocomplete="off"></div>
         <div><label for="eTel" data-i18n="eTel">Teléfono</label><input id="eTel" type="tel" inputmode="tel" autocomplete="tel"></div>
         <div><label for="eDir" data-i18n="eDir">Dirección en el barrio (opcional)</label><input id="eDir" autocomplete="street-address"></div>
       </div>
+      <p class="note2" data-i18n="ePriv">Tus datos solo quedan en tu celular y en la carta que tú envías.</p>
+    </div>
+    <h3 class="paso" data-i18n="ePaso2">2. Así queda tu carta</h3>
+    <article class="paper" id="paper" lang="es">
+      <p id="cFecha">Caucasia, Antioquia</p>
+      <p style="margin-top:22px">Señor<br><b>JHOAN ODERIS MONTES CORTÉS</b><br>Alcalde Municipal de Caucasia — Despacho del Alcalde<br>Caucasia, Antioquia</p>
+      <p style="margin-top:22px"><b>Asunto:</b> Derecho de petición — estado y fecha de inicio de obras del parque del barrio Colinas del Portal</p>
+      <p>Respetado señor alcalde:</p>
+      <p>Yo, <b data-f="nom">[tu nombre]</b>, identificado(a) con cédula de ciudadanía n.º <b data-f="cc">[tu cédula]</b>, vecino(a) del barrio Colinas del Portal, en ejercicio del derecho de petición le solicito información y acciones concretas para que se construya el parque prometido a nuestra comunidad.</p>
+      <h3>Fundamento</h3>
+      <p>Presento esta petición con base en el artículo 23 de la Constitución Política y la Ley 1755 de 2015. Según el artículo 14 de esa ley, la Alcaldía debe responder de fondo dentro de los 15 días hábiles siguientes a su radicación. También invoco el artículo 82 de la Constitución, que obliga al Estado a velar por la protección del espacio público y su destinación al uso común.</p>
+      <h3>Hechos</h3>
+      <ol>
+        <li>La Administración Municipal se comprometió con la comunidad a construir un parque en el lote del barrio Colinas del Portal.</li>
+        <li>El lote está disponible y conserva árboles grandes que dan sombra. A la fecha de esta carta no se han iniciado obras ni se ha socializado con la comunidad un cronograma.</li>
+        <li>Los niños, jóvenes y adultos mayores del barrio y de los sectores vecinos no tienen un espacio cercano y seguro para la recreación y el encuentro.</li>
+        <li>En otras partes del país sí se está haciendo. El 16 de octubre de 2026, el Ministerio de Vivienda, Ciudad y Territorio entregó el parque recreodeportivo Ciudad París en Yopal, Casanare, dentro de su programa de Bienestar Territorial. Se construyó en un lote con árboles, conservándolos, e incluye juegos para todas las edades, huertas, senderos, áreas de descanso, una plaza central y un fogón comunitario. La inversión fue de $6.258 millones y beneficia a cerca de 3.000 hogares de 13 barrios.</li>
+        <li>Si en Yopal se pudo, en Caucasia también se puede. Nuestro lote tiene las mismas condiciones y existen programas nacionales a los que el Municipio puede presentar el proyecto. No hay razón para que Colinas del Portal siga esperando.</li>
+      </ol>
+      <h3>Peticiones</h3>
+      <p>Respetuosamente solicito:</p>
+      <ol>
+        <li>Informar el estado actual del proyecto del parque de Colinas del Portal: si está inscrito en el Banco de Programas y Proyectos (código BPIN o equivalente), su valor, la fuente de los recursos y la dependencia responsable.</li>
+        <li>Informar si existen estudios, diseños o un proceso de contratación para la obra y, de ser así, su número en el SECOP y su estado.</li>
+        <li>Indicar la fecha estimada de inicio y de terminación de las obras.</li>
+        <li>Si el proyecto aún no cuenta con recursos, gestionar su cofinanciación ante el Ministerio de Vivienda, Ciudad y Territorio (programa de Bienestar Territorial), la Gobernación de Antioquia u otras fuentes, como se hizo en Yopal, e informarme las gestiones realizadas.</li>
+        <li>Garantizar que el diseño conserve los árboles existentes del lote.</li>
+        <li>Convocar a la comunidad de Colinas del Portal a una mesa de trabajo para socializar el diseño y el cronograma, e informarme fecha, hora y lugar.</li>
+      </ol>
+      <h3>Referencias</h3>
+      <ul>
+        <li>Ministerio de Vivienda, entrega del parque Ciudad París de Yopal: minvivienda.gov.co/sala-de-prensa/mas-espacios-para-compartir-y-crecer-minvivienda-entrega-parque-recreodeportivo-en-yopal</li>
+        <li>App ciudadana Parque Colinas del Portal: <span id="cUrl"></span></li>
+      </ul>
+      <h3>Notificaciones</h3>
+      <p id="cNotif">Recibiré respuesta en el correo electrónico desde el que envío esta petición, en la dirección <b data-f="dir">barrio Colinas del Portal</b>, Caucasia, o al teléfono <b data-f="tel">[tu teléfono]</b>.</p>
+      <div class="firma">
+        <p>Atentamente,</p>
+        <p style="margin-top:30px"><b data-f="nom">[tu nombre]</b></p>
+        <p>C.C. <span data-f="cc">[tu cédula]</span></p>
+        <p>Vecino(a) del barrio Colinas del Portal, Caucasia</p>
+      </div>
+    </article>
+    <div class="ctools">
+      <button class="cta alt" id="bLeer" data-i18n="bLeer">Leer la carta completa</button>
+    </div>
+    <div class="enviar fin">
+      <h3 data-i18n="eH3">3. Envíala</h3>
+      <p data-i18n="eP">Toca el botón: se abre tu correo con la carta lista y dirigida a la Alcaldía. Solo le das Enviar.</p>
       <p class="err" id="eErr" aria-live="polite"></p>
       <a class="cta go" id="eGo" href="#" data-i18n="eGo">Enviar a la Alcaldía</a><br>
       <a class="gm" id="eGm" href="#" target="_blank" rel="noopener" data-i18n="eGm">¿No se abre el correo? Envíala desde Gmail</a>
-      <p class="to" data-i18n="eTo">Va para el Despacho del Alcalde (alcaldia@caucasia-antioquia.gov.co) y Contáctenos, con copia a Planeación y Obras Públicas. Sale desde tu propio correo, para que la respuesta te llegue a ti.</p>
-      <div class="ok" id="eOk" data-i18n="eOk">Listo. Cuando le des Enviar en tu correo, la carta queda radicada por correo electrónico. Guarda el mensaje que te responda la Alcaldía con el número de radicado y anótalo abajo.</div>
+      <p class="to" data-i18n="eTo">Llega al Despacho del Alcalde (alcaldia@caucasia-antioquia.gov.co) y a Contáctenos, con copia a Planeación y Obras Públicas. Sale desde tu propio correo, así cuenta como tu petición y la respuesta te llega a ti.</p>
+      <div class="ok" id="eOk" data-i18n="eOk">Listo. Cuando le des Enviar en tu correo, tu carta queda radicada. Abajo empieza a correr el plazo de 15 días hábiles. Si la Alcaldía te responde con un número de radicado, anótalo ahí.</div>
+      <p class="to"><a href="#" id="bPrint" style="color:#fff" data-i18n="bPrint">Prefiero imprimirla y llevarla en papel</a></p>
     </div>
   </div>
 </section>
@@ -320,7 +312,7 @@ footer ul{padding-left:18px}
   <div class="wrap">
     <p class="kicker" data-i18n="k4">Derecho de petición al alcalde</p>
     <h2 data-i18n="h2d">La Alcaldía tiene 15 días hábiles para responder</h2>
-    <p class="lead" data-i18n="leadD">Lo dice la Ley 1755 de 2015. Cuando radiquemos la carta, escribe aquí la fecha y la app cuenta los días hábiles que le quedan al alcalde Jhoan Oderis Montes Cortés, sin sábados, domingos ni festivos.</p>
+    <p class="lead" data-i18n="leadD">Lo dice la Ley 1755 de 2015. Cuando envías tu carta, la fecha queda anotada aquí sola y la app cuenta los días hábiles que le quedan al alcalde Jhoan Oderis Montes Cortés, sin sábados, domingos ni festivos.</p>
     <div class="track">
       <div class="form">
         <label for="fecha" data-i18n="lFecha">Fecha en que se radicó la carta</label>
@@ -343,10 +335,10 @@ footer ul{padding-left:18px}
   <div class="wrap">
     <p class="kicker" data-i18n="k5">Entre más vecinos, más fuerza</p>
     <h2 data-i18n="h2e">Comparte esto con tu cuadra</h2>
-    <p class="lead" data-i18n="leadE">Un alcalde le responde más rápido a un barrio entero que a una sola persona. Manda la app a tu grupo de WhatsApp y avisa que apoyas la petición para firmar la carta.</p>
+    <p class="lead" data-i18n="leadE">Una carta se puede ignorar; cien cartas de un mismo barrio, no. Manda la app a tu grupo de WhatsApp para que cada vecino llene y envíe la suya.</p>
     <div class="btns">
       <a class="cta" id="share" href="#" data-i18n="bShare">Compartir por WhatsApp</a>
-      <a class="cta alt" id="sign" href="#" data-i18n="bSign">Quiero firmar la carta</a>
+      <a class="cta alt" id="sign" href="#carta" data-i18n="bSign">Llenar y enviar mi carta</a>
     </div>
   </div>
 </section>
@@ -369,29 +361,27 @@ const T={
 es:{
  feat:["Juegos para todas las edades","Huertas","Jardines de lluvia","Compostaje","Corredores ecológicos","Senderos","Áreas de descanso","Plaza central","Fogón comunitario"],
  ask:[["Que no tumben los árboles","Son lo mejor del lote. El parque se diseña alrededor de ellos, como en Yopal."],["Juegos para los niños","Una zona segura, con piso blando y sombra natural."],["Senderos y luz","Caminos para andar y buena iluminación para que el parque sea seguro de noche."],["Gimnasio al aire libre","Máquinas biosaludables para jóvenes y adultos mayores."],["Bancas y sombra","Un lugar para sentarse a conversar con los vecinos."],["Cronograma público","Fecha de inicio, valor y contratista a la vista de la comunidad."]],
- steps:[["Promesa","La Alcaldía se comprometió con el parque"],["Carta radicada","Derecho de petición al alcalde"],["Respuesta","Plazo de 15 días hábiles"],["Mesa de trabajo","Socializar el diseño con el barrio"],["Obras","Inicio de construcción"]],
- bLess:"Ver menos",eNeed:"Escribe tu nombre completo, cédula y teléfono para que la carta sea válida.",copied:"Copiado",
+ steps:[["Promesa","La Alcaldía se comprometió con el parque"],["Carta enviada","Tu derecho de petición al alcalde"],["Respuesta","Plazo de 15 días hábiles"],["Mesa de trabajo","Socializar el diseño con el barrio"],["Obras","Inicio de construcción"]],
+ bLess:"Ver menos",eNeed:"Escribe tu nombre completo, cédula y teléfono para que tu carta sea válida.",copied:"Copiado",
  left:"días hábiles le quedan al alcalde para responder",late:"días hábiles de retraso: el plazo ya venció",today:"Hoy vence el plazo para responder",due:"Fecha límite: ",
- shareMsg:"Mira cómo Yopal hizo su parque bajo los árboles. En Colinas del Portal (Caucasia) seguimos esperando el nuestro. Apoya la petición al alcalde: ",
- signMsg:"Hola Harold, soy vecino de Colinas del Portal y quiero firmar la carta para que construyan el parque. Mi nombre es: ",
+ shareMsg:"En Yopal ya hicieron su parque bajo los árboles. Si allá se pudo, ¿por qué en Colinas del Portal (Caucasia) no? Llena y envía tu derecho de petición al alcalde desde aquí, toma 2 minutos: ",
  locale:"es-CO"
 },
 en:{
  h1a:"Yopal's kids already play under their trees.",h1b:"Colinas del Portal is still waiting.",
  heroP:"In Caucasia we were promised a park for the Colinas del Portal neighborhood. The lot is there, trees and all, but construction hasn't started. Yopal built one just like it, keeping its trees, and it's already open. If they could do it, so can we.",
- cta1:"Follow the petition to the mayor",eH:"Send it to City Hall yourself",eP:"Every neighbor who sends it is one more petition. Enter your details, tap Send and your email opens with the letter ready and addressed to the mayor. You just press Send.",eNom:"Full name",eCC:"ID number (cédula)",eTel:"Phone",eDir:"Address in the neighborhood (optional)",eGo:"Send to City Hall",eGm:"Email app won't open? Send it from Gmail",eTo:"It goes to the Mayor's Office (alcaldia@caucasia-antioquia.gov.co) and the Contact inbox, with copies to Planning and Public Works. It's sent from your own email so the answer comes back to you.",eOk:"Done. Once you press Send in your email, the letter is filed by email. Keep City Hall's reply with the filing number and enter it below.",eNeed:"Write your full name, cédula and phone so the letter is valid.",k6:"The letter",h2f:"This is the formal petition to the mayor",leadF:"Read it in full. You can print it or save it as a PDF, with the neighbors' signature sheet, to file it at City Hall. The letter is in Spanish because it goes to Caucasia City Hall.",bLeer:"Read the full letter",bLess:"Show less",bPrint:"Print or save as PDF",bCopy:"Copy the text",copied:"Copied",cnote:"When printed, the signature sheet comes out on a separate page. If you already entered the filing date and number below, they appear in the letter.", cta2:"Read the letter",credit:"Photo: @minvivienda reel, Ciudad París park, Yopal",heroAlt:"Ciudad París park in Yopal: paths under large trees, colorful play areas and bark mulch",
- k1:"Same kind of lot, two realities",h2a:"One park delivered, one promised",ySub:"District 6 · Casanare",dEstado:"Status",yEstado:"Opened on October 16, 2026",dInv:"Investment",mill:"million pesos",dBen:"Who benefits",barrios:"neighborhoods",hogares:"about 3,000 households",dArb:"Trees",yArb:"Kept, and the park was built beneath them",cSub:"Bajo Cauca · Antioquia",cEstado:"Promised, no construction",cInv:"Not yet confirmed",cBen:"Colinas del Portal and nearby neighborhoods",cArb:"Already there: the shade Yopal made the most of",
+eH:"1. Your details",ePaso2:"2. This is your letter",eH3:"3. Send it",ePriv:"Your details stay only on your phone and in the letter you send.",eP:"Tap the button: your email opens with the letter ready and addressed to City Hall. You just press Send.",eNom:"Full name",eCC:"ID number (cédula)",eTel:"Phone",eDir:"Address in the neighborhood (optional)",eGo:"Send to City Hall",eGm:"Email app won\'t open? Send it from Gmail",eTo:"It goes to the Mayor\'s Office (alcaldia@caucasia-antioquia.gov.co) and the Contact inbox, with copies to Planning and Public Works. It\'s sent from your own email, so it counts as your petition and the answer comes back to you.",eOk:"Done. Once you press Send in your email, your letter is filed. The 15 business-day deadline starts below. If City Hall replies with a filing number, enter it there.",eNeed:"Write your full name, cédula and phone so your letter is valid.",k6:"Your letter to the mayor",h2f:"Fill it in and send it from your phone",leadF:"Each neighbor files their own petition. Enter your details, the letter fills in with your name and you send it to Caucasia City Hall. The letter is in Spanish because it goes to City Hall. The more letters arrive, the harder we are to ignore.",bLeer:"Read the full letter",bLess:"Show less",bPrint:"I\'d rather print it and take it on paper",cta1:"Send my letter to the mayor",cta2:"If Yopal could do it...",credit:"Photo: @minvivienda reel, Ciudad París park, Yopal",heroAlt:"Ciudad París park in Yopal: paths under large trees, colorful play areas and bark mulch",
+ k1:"If they could do it there, why not here?",h2a:"One park delivered, one promised",ySub:"District 6 · Casanare",dEstado:"Status",yEstado:"Opened on October 16, 2026",dInv:"Investment",mill:"million pesos",dBen:"Who benefits",barrios:"neighborhoods",hogares:"about 3,000 households",dArb:"Trees",yArb:"Kept, and the park was built beneath them",cSub:"Bajo Cauca · Antioquia",cEstado:"Promised, no construction",cInv:"Not yet confirmed",cBen:"Colinas del Portal and nearby neighborhoods",cArb:"Already there: the shade Yopal made the most of",
  k2:"The Yopal example",h2b:"What a well-built park has",leadB:"The Ministry of Housing built it under its Territorial Well-being program. It isn't just a field: it's a place for kids, seniors and families, designed around the nature that was already there.",g1:"Handing the park over to the community",g2:"Play areas for all ages",g3:"Paths and green areas",g4:"Neighbors already use it",g5:"Alba Mery Martínez, park beneficiary",
  k3:"What the community asks for",h2c:"How we want it in Colinas del Portal",
- k4:"Petition to the mayor",h2d:"City Hall has 15 business days to answer",leadD:"That's Colombian law (Ley 1755 of 2015). Once the letter is filed, enter the date here and the app counts the business days Mayor Jhoan Oderis Montes Cortés has left, skipping weekends and holidays.",lFecha:"Date the letter was filed",lRad:"Filing number (optional)",note:"Saved only on this phone. Colombia time.",dialEmpty:"business days to answer, counted from the day the letter is filed",
- k5:"More neighbors, more strength",h2e:"Share this with your block",leadE:"A mayor answers a whole neighborhood faster than a single person. Send the app to your WhatsApp group and say you support the petition so you can sign the letter.",bShare:"Share on WhatsApp",bSign:"I want to sign the letter",
+ k4:"Petition to the mayor",h2d:"City Hall has 15 business days to answer",leadD:"That's Colombian law (Ley 1755 of 2015). When you send your letter, the date is saved here automatically and the app counts the business days Mayor Jhoan Oderis Montes Cortés has left, skipping weekends and holidays.",lFecha:"Date the letter was filed",lRad:"Filing number (optional)",note:"Saved only on this phone. Colombia time.",dialEmpty:"business days to answer, counted from the day the letter is filed",
+ k5:"More neighbors, more strength",h2e:"Share this with your block",leadE:"One letter can be ignored; a hundred letters from the same neighborhood can't. Send the app to your WhatsApp group so every neighbor fills in and sends their own.",bShare:"Share on WhatsApp",bSign:"Fill in and send my letter",
  fuentes:"<b>Sources</b>",s1:"Ministry of Housing: Ciudad París park opens in Yopal (Oct 16, 2026)",s2:"@minvivienda reel about the Yopal park",s3:"Función Pública: Caucasia mayor Jhoan Oderis Montes Cortés",foot:"A citizen initiative by Colinas del Portal neighbors, made by Vibras Positivas HM.",
  feat:["Play areas for all ages","Vegetable gardens","Rain gardens","Composting","Ecological corridors","Walking paths","Rest areas","Central plaza","Community cookstove"],
  ask:[["Don't cut down the trees","They're the best part of the lot. Design the park around them, like Yopal did."],["Play area for kids","Safe, with soft ground and natural shade."],["Paths and lighting","Walkways and good lights so the park is safe at night."],["Outdoor gym","Exercise machines for young people and seniors."],["Benches and shade","A place to sit and talk with neighbors."],["Public schedule","Start date, budget and contractor visible to everyone."]],
- steps:[["Promise","City Hall committed to the park"],["Letter filed","Formal petition to the mayor"],["Answer","15 business-day deadline"],["Work session","Review the design with the neighborhood"],["Construction","Building starts"]],
+ steps:[["Promise","City Hall committed to the park"],["Letter sent","Your formal petition to the mayor"],["Answer","15 business-day deadline"],["Work session","Review the design with the neighborhood"],["Construction","Building starts"]],
  left:"business days left for the mayor to answer",late:"business days late: the deadline has passed",today:"The deadline to answer is today",due:"Deadline: ",
- shareMsg:"See how Yopal built its park under the trees. In Colinas del Portal (Caucasia) we're still waiting for ours. Support the petition to the mayor: ",
- signMsg:"Hi Harold, I live in Colinas del Portal and I want to sign the letter so they build the park. My name is: ",
+ shareMsg:"Yopal already built its park under the trees. If they could do it, why not Colinas del Portal (Caucasia)? Fill in and send your petition to the mayor here, it takes 2 minutes: ",
  locale:"en-US"
 }};
 const ES={};document.querySelectorAll("[data-i18n]").forEach(e=>ES[e.dataset.i18n]=e.innerHTML);
@@ -420,8 +410,8 @@ function habilesEntre(a,b){let n=0,d=new Date(a);while(d<b){d.setUTCDate(d.getUT
 
 const fecha=document.getElementById("fecha"),rad=document.getElementById("rad");
 try{fecha.value=localStorage.getItem("pcp-fecha")||"";rad.value=localStorage.getItem("pcp-rad")||""}catch(e){}
-fecha.oninput=()=>{try{localStorage.setItem("pcp-fecha",fecha.value)}catch(e){}calc();carta()};
-rad.oninput=()=>{try{localStorage.setItem("pcp-rad",rad.value)}catch(e){}carta()};
+fecha.oninput=()=>{try{localStorage.setItem("pcp-fecha",fecha.value)}catch(e){}calc()};
+rad.oninput=()=>{try{localStorage.setItem("pcp-rad",rad.value)}catch(e){}};
 
 function calc(){
   const t=T[L],big=document.getElementById("big"),txt=document.getElementById("dialTxt"),dd=document.getElementById("dialDate");
@@ -441,62 +431,45 @@ function calc(){
 function links(){
   const t=T[L],url=location.href.split("#")[0];
   document.getElementById("share").href="https://wa.me/?text="+encodeURIComponent(t.shareMsg+url);
-  document.getElementById("sign").href="https://wa.me/573117700431?text="+encodeURIComponent(t.signMsg);
 }
 
-/* la carta */
+/* la carta: cada vecino llena y envía la suya */
 const paper=document.getElementById("paper");
-document.getElementById("filas").innerHTML="<tr><td></td><td></td><td></td><td></td><td></td></tr>".repeat(18);
-function carta(){
-  const t=T[L];
-  const d=fecha.value?new Date(fecha.value+"T00:00:00Z"):hoyCO();
-  document.getElementById("cFecha").textContent="Caucasia, Antioquia, "+d.toLocaleDateString("es-CO",{day:"numeric",month:"long",year:"numeric",timeZone:"UTC"});
-  const r=rad.value.trim();
-  document.getElementById("cRad").innerHTML=r?'<span class="rad-ok">Radicado n.º '+r.replace(/[<>&]/g,"")+"</span>":"";
-  document.getElementById("cUrl").textContent=location.href.split("#")[0];
-  document.getElementById("bLeer").textContent=paper.classList.contains("open")?t.bLess:t.bLeer;
-}
-document.getElementById("bLeer").onclick=()=>{paper.classList.toggle("open");if(!paper.classList.contains("open"))paper.scrollIntoView({block:"start"});carta()};
-document.getElementById("bPrint").onclick=()=>{carta();window.print()};
-document.getElementById("bCopy").onclick=async e=>{
-  const c=paper.cloneNode(true);c.querySelector(".planilla").remove();
-  const txt=c.innerText.replace(/\n{3,}/g,"\n\n").trim();
-  try{await navigator.clipboard.writeText(txt)}catch(_){const a=document.createElement("textarea");a.value=txt;document.body.appendChild(a);a.select();document.execCommand("copy");a.remove()}
-  const b=e.target,o=b.textContent;b.textContent=T[L].copied;setTimeout(()=>b.textContent=o,1800);
-};
-
-/* enviar a la Alcaldía */
 const PARA="alcaldia@caucasia-antioquia.gov.co,contactenos@caucasia-antioquia.gov.co",
       CC="planeacion@caucasia-antioquia.gov.co,obraspublicas@caucasia-antioquia.gov.co",
       ASUNTO="Derecho de petición — parque del barrio Colinas del Portal";
 const eF={nom:document.getElementById("eNom"),cc:document.getElementById("eCC"),tel:document.getElementById("eTel"),dir:document.getElementById("eDir")};
+const PH={nom:"[tu nombre]",cc:"[tu cédula]",tel:"[tu teléfono]",dir:"barrio Colinas del Portal"};
 try{const g=JSON.parse(localStorage.getItem("pcp-firmante")||"{}");for(const k in eF)eF[k].value=g[k]||""}catch(e){}
 const limpio=v=>v.replace(/\s+/g," ").trim();
+function carta(){
+  const t=T[L];
+  document.getElementById("cFecha").textContent="Caucasia, Antioquia, "+hoyCO().toLocaleDateString("es-CO",{day:"numeric",month:"long",year:"numeric",timeZone:"UTC"});
+  paper.querySelectorAll("[data-f]").forEach(el=>{const k=el.dataset.f,v=limpio(eF[k].value);
+    el.textContent=v?(k==="dir"?v+", barrio Colinas del Portal":v):PH[k];el.classList.toggle("vacio",!v&&k!=="dir")});
+  document.getElementById("cUrl").textContent=location.href.split("#")[0];
+  document.getElementById("bLeer").textContent=paper.classList.contains("open")?t.bLess:t.bLeer;
+}
 function cuerpo(){
-  const v={};for(const k in eF)v[k]=limpio(eF[k].value);
   const c=paper.cloneNode(true);
-  c.querySelector(".planilla").remove();c.querySelector("#cRad").remove();
-  c.querySelector("#cFecha").textContent="Caucasia, Antioquia, "+hoyCO().toLocaleDateString("es-CO",{day:"numeric",month:"long",year:"numeric",timeZone:"UTC"});
-  c.querySelector("#cNotif").textContent="Recibo respuesta "+(v.dir?"en "+v.dir+", ":"en el ")+"barrio Colinas del Portal, Caucasia; en este mismo correo electrónico o al teléfono "+v.tel+".";
-  c.querySelector("#cFirma").innerHTML="<p>Atentamente,</p><p>"+v.nom.replace(/[<>&]/g,"")+"</p><p>C.C. "+v.cc.replace(/[<>&]/g,"")+"</p><p>Vecino(a) del barrio Colinas del Portal, Caucasia</p>";
   c.querySelectorAll("h3").forEach(h=>h.textContent="\n"+h.textContent.toUpperCase());
   c.querySelectorAll("ol").forEach(o=>o.querySelectorAll(":scope>li").forEach((li,i)=>li.textContent=(i+1)+". "+li.textContent));
-  const an=c.querySelectorAll("ul>li");an[an.length-1].remove();an[an.length-2].remove();
   c.querySelectorAll("ul>li").forEach(li=>li.textContent="- "+li.textContent);
   c.querySelectorAll("ol,ul").forEach(l=>l.after(document.createElement("br")));
-  c.style.cssText="position:absolute;left:-9999px;max-height:none";document.body.appendChild(c);
+  c.style.cssText="position:absolute;left:-9999px;max-height:none";c.classList.add("open");document.body.appendChild(c);
   const t=c.innerText.replace(/\n{3,}/g,"\n\n").trim();c.remove();return t;
 }
 function valida(){
   let ok=true;
   [["nom",5],["cc",5],["tel",7]].forEach(([k,n])=>{const bad=limpio(eF[k].value).length<n;eF[k].setAttribute("aria-invalid",bad);if(bad)ok=false});
   document.getElementById("eErr").textContent=ok?"":T[L].eNeed;
+  if(!ok)document.getElementById("enviar").scrollIntoView({behavior:"smooth",block:"start"});
   return ok;
 }
-for(const k in eF)eF[k].addEventListener("input",()=>{const g={};for(const j in eF)g[j]=eF[j].value;try{localStorage.setItem("pcp-firmante",JSON.stringify(g))}catch(e){}if(eF[k].getAttribute("aria-invalid")==="true")valida()});
+for(const k in eF)eF[k].addEventListener("input",()=>{const g={};for(const j in eF)g[j]=eF[j].value;try{localStorage.setItem("pcp-firmante",JSON.stringify(g))}catch(e){}if(eF[k].getAttribute("aria-invalid")==="true")valida();carta()});
 function enviado(){
   document.getElementById("eOk").classList.add("show");
-  if(!fecha.value){fecha.value=iso(hoyCO());try{localStorage.setItem("pcp-fecha",fecha.value)}catch(e){}calc();carta()}
+  if(!fecha.value){fecha.value=iso(hoyCO());try{localStorage.setItem("pcp-fecha",fecha.value)}catch(e){}calc()}
 }
 document.getElementById("eGo").onclick=e=>{
   e.preventDefault();if(!valida())return;
@@ -508,6 +481,8 @@ document.getElementById("eGm").onclick=e=>{
   e.currentTarget.href="https://mail.google.com/mail/?view=cm&fs=1&to="+encodeURIComponent(PARA)+"&cc="+encodeURIComponent(CC)+"&su="+encodeURIComponent(ASUNTO)+"&body="+encodeURIComponent(cuerpo());
   enviado();
 };
+document.getElementById("bLeer").onclick=()=>{paper.classList.toggle("open");if(!paper.classList.contains("open"))paper.scrollIntoView({block:"start"});carta()};
+document.getElementById("bPrint").onclick=e=>{e.preventDefault();if(!valida())return;carta();window.print()};
 
 /* contadores */
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;const el=e.target,to=+el.dataset.to,st=performance.now();io.unobserve(el);
